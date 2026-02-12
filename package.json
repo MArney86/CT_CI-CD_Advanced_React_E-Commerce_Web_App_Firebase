@@ -22,7 +22,8 @@
     "react-dom": "^19.1.0",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.7.0",
-    "redux": "^5.0.1"
+    "redux": "^5.0.1",
+    "whatwg-fetch": "^3.6.20"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.29.0",
@@ -52,8 +53,23 @@
       "@testing-library/jest-dom"
     ],
     "transform": {
-      "^.+\\(js|jsx)$": "babel-jest",
-      "^.+\\.(ts|tsx)$": "ts-jest"
-    }
+      "^.+\\.(js|jsx)$": "babel-jest",
+      "^.+\\.(ts|tsx)$": [
+        "ts-jest",
+        {
+          "tsconfig": "tsconfig.app.json"
+        }
+      ]
+    },
+    "moduleNameMapper": {
+      "^react-bootstrap/Alert$": "<rootDir>/src/__mocks__/react-bootstrap/Alert.tsx",
+      "^react-bootstrap/Button$": "<rootDir>/src/__mocks__/react-bootstrap/Button.tsx",
+      "^react-bootstrap/Dropdown$": "<rootDir>/src/__mocks__/react-bootstrap/Dropdown.tsx",
+      "^react-bootstrap/DropdownButton$": "<rootDir>/src/__mocks__/react-bootstrap/DropdownButton.tsx",
+      "^react-bootstrap/Form$": "<rootDir>/src/__mocks__/react-bootstrap/Form.tsx"
+    },
+    "transformIgnorePatterns": [
+      "/node_modules/(?!react-bootstrap|@smastrom/react-rating|@firebase/.*)/"
+    ]
   }
 }
